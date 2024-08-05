@@ -10,13 +10,16 @@ function showRules() {
 }
 </script>
 <template>
-  <section class="flex justify-center mt-[140px] mb-14">
+  <section
+    class="flex justify-center mt-[140px] mb-14 md:m-0 md:fixed md:bottom-8 md:right-8"
+  >
     <Rulesbtn @show="showRules" />
-    
   </section>
-  <transition name="slide-fade">
-    <div v-if="isShow" class="bg-white fixed top-0 left-0 right-0 min-h-screen">
-      <h2 class="text-[#3B4262] font-bold text-[32px] text-center mt-24 leading-8">
+  <transition  name="slide-fade">
+    <div v-if="isShow" class="bg-white fixed top-0 left-0 right-0 min-h-screen md:hidden">
+      <h2
+        class="text-[#3B4262] font-bold text-[32px] uppercase text-center mt-24 leading-8"
+      >
         Rules
       </h2>
       <img class="mx-auto mt-[113px]" src="/rules_mobile.svg" alt="rules" />
@@ -25,31 +28,49 @@ function showRules() {
       </div>
     </div>
   </transition>
- 
+  <Transition  name="fade">
+    <section v-if="isShow" class="hidden md:block ">
+      <div @click="() => (show = false)" class="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
+     <div
+      
+      class="fixed z-50 left-1/2 right-1/2 top-1/2 bottom-1/2 translate-y-[-50%] translate-x-[-50%] bg-white rounded-lg w-[400px] h-[415px] p-8"
+    >
+      <div class="flex justify-between">
+        <h2 class="text-[#3B4262] font-bold text-[32px] uppercase leading-8">Rules</h2>
+        <CloseBtn @close="() => (show = false)" />
+      </div>
+      <img class="mx-auto mt-12" src="/rules.svg" alt="rules" />
+    </div>
+    </section>
+    
+  </Transition>
 </template>
 <style>
-/* Define the transition classes */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 .fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
-.fade-enter-to, .fade-leave-from {
+.fade-enter-to,
+.fade-leave-from {
   opacity: 1;
 }
 
 /* Define the transition classes */
-.slide-fade-enter-active, .slide-fade-leave-active {
+.slide-fade-enter-active,
+.slide-fade-leave-active {
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
-.slide-fade-enter-from, .slide-fade-leave-to {
+.slide-fade-enter-from,
+.slide-fade-leave-to {
   transform: translateY(100%);
   opacity: 0;
 }
-.slide-fade-enter-to, .slide-fade-leave-from {
+.slide-fade-enter-to,
+.slide-fade-leave-from {
   transform: translateY(0);
   opacity: 1;
 }
-
 </style>

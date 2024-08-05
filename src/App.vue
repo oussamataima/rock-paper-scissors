@@ -1,40 +1,34 @@
 <script setup lang="ts">
  import Rules from '@/components/Rules.vue';
+ import SPC from '@/components/SPC.vue';
 
 </script>
 
 <template>
   <main>
-    <header class="border-[3px]  border-[#FFFFFF4A] max-w-[311px] mx-auto flex justify-between items-center p-3 pl-[23px] mt-8">
+    <header class="border-[2px]  border-[#FFFFFF4A] max-w-[311px] md:max-w-[700px] mx-auto flex justify-between items-center p-3 pl-[23px] md:py-[18px] md:pl-8 md:pr-6 mt-8 rounded-[15px]">
       <h1
-        class="flex flex-col text-[21px] text-white font-bold uppercase leading-[0.762] tracking-[0.075em] w-fit text-shadow"
+        class="flex flex-col text-[21px] md:text-[40px] text-white font-bold uppercase
+         leading-[0.762] tracking-[0.075em] w-fit text-shadow md:leading-[0.8]"
       >
         <span>rock</span>
         <span>paper</span>
         <span>scissor</span>
       </h1>
-      <div class="w-20 h-[72px] bg-score rounded flex flex-col justify-center items-center ">
-        <span class="text-[#2a44c2] font-semibold text-[10px] tracking-[0.17em] uppercase leading-normal">score</span>
-        <span class="text-[#565467] font-bold text-[40px] uppercase leading-10">12</span>
+      <div class="w-20 h-[72px] bg-score rounded flex flex-col justify-center items-center md:w-[150px] md:h-[114px]">
+        <span class="text-[#2a44c2] font-semibold text-[10px] tracking-[0.17em] uppercase leading-normal md:text-[15px] md:tracking-[0.22em]">score</span>
+        <span class="text-[#565467] font-bold text-[40px] uppercase leading-10 md:text-[66px] md:leading-[66px]">12</span>
       </div>
     </header>
-    <section class="relative mt-[105px] max-w-[312px] h-[281px] mx-auto  flex justify-center items-center">
-      <img class="w-[129.36px] h-[132.65px] absolute top-0 left-0" src="/paper.svg" alt="">
-      <img class="w-[129.36px] h-[132.65px] absolute top-0 right-0" src="/scissor.svg" alt="">
-      <img class="w-[129.36px] h-[132.65px] absolute bottom-0" src="/rock.svg" alt="">
-      <img class="" src="/holder.svg" alt="">
-    </section>
+    <SPC/>
     <Rules/>
   </main>
 </template>
-<!-- <style>
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #000; /* Example background color */
+<style>
+.element:hover {
+  box-shadow: 0 0 0 21px rgba(255, 255, 255, 0.05);
+  border-radius: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
 .ellipse-container {
@@ -49,5 +43,3 @@ body {
   border-radius: 50%;
 }
 </style>
-
- p -->
