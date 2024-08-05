@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import Rules from '@/components/Rules.vue';
+ import Rules from '@/components/Rules.vue';
+
 </script>
 
 <template>
