@@ -20,11 +20,11 @@ import { store } from './store';
       </h1>
       <div class="w-20 h-[72px] bg-score rounded flex flex-col justify-center items-center md:w-[150px] md:h-[114px]">
         <span class="text-[#2a44c2] font-semibold text-[10px] tracking-[0.17em] uppercase leading-normal md:text-[15px] md:tracking-[0.22em]">score</span>
-        <span class="text-[#565467] font-bold text-[40px] uppercase leading-10 md:text-[66px] md:leading-[66px]">12</span>
+        <span class="text-[#565467] font-bold text-[40px] uppercase leading-10 md:text-[60px] md:leading-[60px]">{{  store.score }}</span>
       </div>
     </header>
     <SPC v-if="!store.userPick"/>
-    <Gameplay  v-else :botPick="store.botPick as 'rock' | 'paper' | 'scissor'" :yourPick="store.userPick as 'rock' | 'paper' | 'scissor'"  />
+    <Gameplay  v-else />
     <Rules/>
   </main>
 </template>

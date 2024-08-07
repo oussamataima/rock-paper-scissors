@@ -1,35 +1,57 @@
-import { reactive } from 'vue'
+import { reactive } from 'vue';
+
+type Choice = 'rock' | 'paper' | 'scissor';
 
 export const store = reactive({
-  userPick: '',
-  botPick: '',
+  userPick: '' as Choice | '',
+  botPick: '' as Choice | '',
+  winner: '',
   status: '',
-  pick(element : 'rock'| 'paper'| 'scissor') {
-    this.userPick = element
+  isLoading: false,
+  score: 0,
+
+  pick(element: Choice) {
+    this.userPick = element;
+    this.isLoading = true;
+    setTimeout(() => {
+      this.bot();
+      this.isLoading = false;
+    }, 1000); // Simulate loading time
   },
 
   reset() {
-    this.userPick = ''
-    this.botPick = ''
+    this.userPick = '';
+    this.botPick = '';
+    this.status = '';
+    this.winner = '';
+    this.isLoading = false;
   },
-  bot() {
-    const botPick = ['rock', 'paper', 'scissor'][Math.floor(Math.random() * 3)]
-    this.botPick = botPick
 
-    if(botPick === this.userPick) {
-      this.status = 'draw'
-    } else if (botPick === 'rock' && this.userPick === 'paper') {
-      this.status = 'win'
-    } else if (botPick === 'rock' && this.userPick === 'scissor') {
-      this.status = 'lose'
-    } else if (botPick === 'paper' && this.userPick === 'rock') {
-      this.status = 'lose'
-    } else if (botPick === 'paper' && this.userPick === 'scissor') {
-      this.status = 'win'
-    } else if (botPick === 'scissor' && this.userPick === 'rock') {
-      this.status = 'win'
-    } else if (botPick === 'scissor' && this.userPick === 'paper') {
-      this.status = 'lose'
-    }
+  bot() {
+    const choices: Choice[] = ['rock', 'paper', 'scissor'];
+    const botPick = choices[Math.floor(Math.random() * 3)];
+    this.botPick = botPick;
+    this.evaluateGame(botPick, this.userPick);
   },
-})
+
+  evaluateGame(botPick: Choice, userPick: Choice | '') {
+    if (!userPick) return;
+
+    if (botPick === userPick) {
+      this.status = 'draw';
+    } else if (
+      (botPick === 'rock' && userPick === 'paper') ||
+      (botPick === 'paper' && userPick === 'scissor') ||
+      (botPick === 'scissor' && userPick === 'rock')
+    ) {
+      this.status = 'win';
+      this.score += 1;
+      this.winner = 'user';
+    } else {
+      this.status = 'lose';
+      this.score -= 1;
+      this.winner = 'bot';
+    }
+    console.log(this.score); // Logging the score for debugging
+  },
+});

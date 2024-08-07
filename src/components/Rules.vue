@@ -45,32 +45,3 @@ function showRules() {
     
   </Transition>
 </template>
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-.fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
-}
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
-
-/* Define the transition classes */
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(100%);
-  opacity: 0;
-}
-.slide-fade-enter-to,
-.slide-fade-leave-from {
-  transform: translateY(0);
-  opacity: 1;
-}
-</style>
