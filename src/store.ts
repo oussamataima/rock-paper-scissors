@@ -8,7 +8,7 @@ export const store = reactive({
   winner: '',
   status: '',
   isLoading: false,
-  score: 0,
+  score: parseInt(localStorage.getItem('score') ?? '0'),
 
   pick(element: Choice) {
     this.userPick = element;
@@ -46,12 +46,14 @@ export const store = reactive({
     ) {
       this.status = 'win';
       this.score += 1;
+      localStorage.setItem('score', this.score.toString());
       this.winner = 'user';
     } else {
       this.status = 'lose';
       this.score -= 1;
+      localStorage.setItem('score', this.score.toString());
+
       this.winner = 'bot';
     }
-    console.log(this.score); // Logging the score for debugging
   },
 });

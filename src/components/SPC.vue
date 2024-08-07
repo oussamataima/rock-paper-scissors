@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { store } from '@/store';
 
-console.log(store.userPick)
 
 </script>
 <template>
