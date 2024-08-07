@@ -18,3 +18,21 @@ body {
   background: linear-gradient(0deg, #F3F3F3 0%, #FFF 100%);
 }
 
+
+.element:hover {
+  box-shadow: 0 0 0 21px rgba(255, 255, 255, 0.05);
+  border-radius: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.ellipse-container {
+  background-image: url("/scisor.svg");
+  border-radius: 100%;
+  width: 292.611px;
+  height: 286.699px;
+  position: relative;
+
+  box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 110px rgba(255, 255, 255, 0.05),
+    0 0 0 180px rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}

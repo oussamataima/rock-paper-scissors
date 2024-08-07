@@ -1,13 +1,16 @@
 <script setup lang="ts">
- import Rules from '@/components/Rules.vue';
- import SPC from '@/components/SPC.vue';
+
+import Rules from '@/components/Rules.vue';
+import SPC from '@/components/SPC.vue';
+import Gameplay from './components/Gameplay.vue';
+import { store } from './store';
 
 </script>
 
 <template>
   <main>
     <header class="border-[2px]  border-[#FFFFFF4A] max-w-[311px] md:max-w-[700px] mx-auto flex justify-between items-center p-3 pl-[23px] md:py-[18px] md:pl-8 md:pr-6 mt-8 rounded-[15px]">
-      <h1
+      <h1  
         class="flex flex-col text-[21px] md:text-[40px] text-white font-bold uppercase
          leading-[0.762] tracking-[0.075em] w-fit text-shadow md:leading-[0.8]"
       >
@@ -20,26 +23,11 @@
         <span class="text-[#565467] font-bold text-[40px] uppercase leading-10 md:text-[66px] md:leading-[66px]">12</span>
       </div>
     </header>
-    <SPC/>
+    <SPC v-if="!store.userPick"/>
+    <Gameplay  v-else :botPick="store.botPick as 'rock' | 'paper' | 'scissor'" :yourPick="store.userPick as 'rock' | 'paper' | 'scissor'"  />
     <Rules/>
   </main>
 </template>
 <style>
-.element:hover {
-  box-shadow: 0 0 0 21px rgba(255, 255, 255, 0.05);
-  border-radius: 100%;
-  transition: all 0.3s ease-in-out;
-}
 
-.ellipse-container {
-  background-image: url("/scisor.svg");
-  border-radius: 100%;
-  width: 292.611px;
-  height: 286.699px;
-  position: relative;
-
-  box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.05), 0 0 0 110px rgba(255, 255, 255, 0.05),
-    0 0 0 180px rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-}
 </style>
