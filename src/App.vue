@@ -9,7 +9,7 @@ import { store } from './store';
 
 <template>
   <main>
-    <header class="border-[2px]  border-[#FFFFFF4A] max-w-[311px] md:max-w-[700px] mx-auto flex justify-between items-center p-3 pl-[23px] md:py-[18px] md:pl-8 md:pr-6 mt-8 rounded-[15px]">
+    <header class="border-[2px]  border-[#FFFFFF4A] max-w-[311px] md:max-w-[700px] mx-auto flex justify-between items-center p-3 pl-[23px] md:py-[18px] md:pl-8 md:pr-6 mt-8 lg:mt-12 rounded-[15px]">
       <h1  
         class="flex flex-col text-[21px] md:text-[40px] text-white font-bold uppercase
          leading-[0.762] tracking-[0.075em] w-fit text-shadow md:leading-[0.8]"
